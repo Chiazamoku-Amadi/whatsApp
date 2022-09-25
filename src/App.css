@@ -1,0 +1,138 @@
+.container {
+  display: grid;
+  grid-template-columns: 0.445fr auto;
+  grid-template-rows: auto 1fr;
+}
+
+.header {
+  background-color: #f0f2f5;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  align-self: start;
+  padding: 0.6em 1em;
+}
+
+.side {
+  background-color: #fefffe;
+  grid-column: 1 / 2;
+  grid-row: 2 / -1;
+}
+
+.view {
+  background-color: #f0f2f5;
+  grid-column: 2 / -1;
+  grid-row: 1 / -1;
+  box-shadow: rgba(0, 0, 0, 0.04) -1px 0px 3px;
+}
+
+.profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.65em;
+  margin-right: 0.5em;
+}
+
+.search-bar {
+  background-color: #f0f2f5;
+  border-radius: 10px;
+  padding: 0.15em 0.8em;
+  margin: 0.4em 0em 0.45em 0.8em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.9em;
+}
+
+.search-bar > label {
+  padding-top: 0.2em;
+}
+
+.search-bar > input {
+  background-color: #f0f2f5;
+  color: #3b4a54;
+  border: none;
+  font-family: Segoe UI, Helvetica Neue, Helvetica, Lucida Grande, Arial, Ubuntu,
+    Cantarell, Fira Sans, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  padding-bottom: 0.2em;
+}
+
+input:focus {
+  outline: none;
+}
+
+.side-bar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #e8edee;
+}
+
+.side-bar-header-search {
+  width: 90%;
+}
+
+.side-bar-header-filter {
+  display: flex;
+  justify-content: center;
+  width: 10%;
+}
+
+.chat-view {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2.1em;
+}
+
+.about {
+  text-align: center;
+  margin-bottom: 4em;
+}
+
+.about > h1 {
+  color: #41525d;
+  font-size: 32px;
+  font-weight: 100;
+  margin-bottom: 0.4em;
+}
+
+.about > p {
+  color: #667781;
+  font-size: 14px;
+}
+
+.encrypt {
+  color: #8696a0;
+  font-size: 14px;
+  display: flex;
+  gap: 0.3em;
+}
+
+.encrypt > span {
+  padding-top: 0.15em;
+}
+
+.green {
+  background-color: #25d366;
+  padding: 0.2em;
+  width: 100%;
+  /* margin-top: 2em; */
+}
