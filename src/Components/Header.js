@@ -4,13 +4,13 @@ import { ReactComponent as Status } from "../Assets/status-icon.svg";
 import { ReactComponent as Message } from "../Assets/message-icon.svg";
 import { ReactComponent as Menu } from "../Assets/menu-icon.svg";
 
-function Header() {
+function Header({ create }) {
   return (
     <header className="nav">
       <img className="profile" src={profilePicture} alt="" />
       <div>
         <Status />
-        <Message />
+        <Message onClick={create} />
         <Menu />
       </div>
     </header>
