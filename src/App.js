@@ -9,8 +9,6 @@ import { ReactComponent as PersonAvatar } from "./Assets/person-avatar.svg";
 function App() {
   const [allChats, setAllChats] = useState([]);
 
-  // const personAvatar = <PersonAvatar />;
-
   function createNewChat() {
     let date = new Date();
 
@@ -25,6 +23,7 @@ function App() {
           read: false,
         },
       ],
+      isCurrentChat: false,
       // lastMessage: messages.at[-1],
       // lastMessageTime: lastMessage.time,
       // lastSeen,
@@ -35,16 +34,26 @@ function App() {
   }
   console.log(allChats);
 
+  function isCurrentChat(id) {
+    setAllChats((prevChats) =>
+      prevChats.map((chat) => {
+        return chat.id === id
+          ? { ...chat, isCurrentChat: true }
+          : { ...chat, isCurrentChat: false };
+      })
+    );
+  }
+
   return (
     <div className="container">
       <header className="header">
         <Header create={createNewChat} />
       </header>
       <aside className="side">
-        <SideBar chats={allChats} />
+        <SideBar chats={allChats} currentChat={isCurrentChat} />
       </aside>
       <main className="view">
-        <View />
+        <View chats={allChats} />
       </main>
     </div>
   );

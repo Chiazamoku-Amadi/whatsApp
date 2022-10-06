@@ -10,7 +10,7 @@ function Header({ create }) {
       <img className="profile" src={profilePicture} alt="" />
       <div>
         <Status />
-        <Message onClick={create} />
+        <Message className="new-chat" onClick={create} />
         <Menu />
       </div>
     </header>
