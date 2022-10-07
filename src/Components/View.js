@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-// import { ReactComponent as LinkedDevices } from "../Assets/linked-devices.svg";
-// import { ReactComponent as Encryption } from "../Assets/encryption.svg";
+import { ReactComponent as LinkedDevices } from "../Assets/linked-devices.svg";
+import { ReactComponent as Encryption } from "../Assets/encryption.svg";
 import { ReactComponent as SearchIcon } from "../Assets/search-icon.svg";
 import { ReactComponent as Menu } from "../Assets/menu-icon.svg";
 import { ReactComponent as Emoji } from "../Assets/emoji.svg";
@@ -16,6 +16,8 @@ function View({ chats }) {
     });
   });
 
+  const noneSelected = chats.every((chat) => !chat.isCurrentChat);
+
   const [newMessage, setNewMessage] = useState({
     id: nanoid(),
     text: messageText,
@@ -23,13 +25,10 @@ function View({ chats }) {
   });
   const [chatMessages, setChatMessages] = useState([]);
 
-  // console.log(chatMessages);
-
   function createNewMessage() {
     newMessage.sent &&
       setChatMessages((prevMessages) => [...prevMessages, newMessage.text]);
-    // console.log(chatMessages);
-    // console.log(chatMessages.length);
+
     console.log(newMessage.text, newMessage.id);
   }
 
@@ -73,18 +72,14 @@ function View({ chats }) {
   });
 
   // Chat messages section
-  const allChatMessages = chats.map((chat) => {
-    return chatMessages.map((chatMessage) => {
-      return (
-        chat.isCurrentChat && (
-          <section key={chat.id} className="section">
-            <div key={chatMessage.id} className="chatMessage">
-              {chatMessage}
-            </div>
-          </section>
-        )
-      );
-    });
+  const chatMessage = chats.map((chat) => {
+    return (
+      chat.isCurrentChat && (
+        <div key={chat.id} className="view-user-messages">
+          {chatMessages.map((chatMessage) => chatMessage)}
+        </div>
+      )
+    );
   });
 
   // Chat footer section
@@ -110,28 +105,32 @@ function View({ chats }) {
 
   return (
     <>
-      {/* <main className="chat-view-initial">
-        <LinkedDevices />
-        <div className="about">
-          <h1>WhatsApp Web</h1>
-          <p>Send and receive messages without keeping your phone online.</p>
-          <p>
-            Use WhatsApp on up to 4 linked devices and 1 phone at the same time.
-          </p>
-        </div>
-        <div className="encrypt">
-          <span>
-            <Encryption />
-          </span>
-          <p>End-to-end encrypted</p>
-        </div>
-        <div className="green"></div>
-      </main> */}
-      <section className="chat-view">
-        <div className="view-header">{chatHeader}</div>
-        <div className="view-chat-messages">{allChatMessages}</div>
-        <div className="view-footer">{chatFooter}</div>
-      </section>
+      {chats && noneSelected ? (
+        <main className="chat-view-initial">
+          <LinkedDevices />
+          <div className="about">
+            <h1>WhatsApp Web</h1>
+            <p>Send and receive messages without keeping your phone online.</p>
+            <p>
+              Use WhatsApp on up to 4 linked devices and 1 phone at the same
+              time.
+            </p>
+          </div>
+          <div className="encrypt">
+            <span>
+              <Encryption />
+            </span>
+            <p>End-to-end encrypted</p>
+          </div>
+          <div className="green"></div>
+        </main>
+      ) : (
+        <section className="chat-view">
+          <div className="view-header">{chatHeader}</div>
+          <div className="view-messages">{chatMessage}</div>
+          <div className="view-footer">{chatFooter}</div>
+        </section>
+      )}
     </>
   );
 }

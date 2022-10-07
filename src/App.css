@@ -159,14 +159,12 @@ input:focus {
 }
 
 .user-dp {
-  /* background-color: turquoise; */
   grid-column: 1 / 2;
   grid-row: 1 / -1;
   margin-right: 1em;
 }
 
 .user-name {
-  /* background-color: cyan; */
   grid-column: 2 / 3;
   grid-row: 1 / 2;
   font-size: 17px;
@@ -174,7 +172,6 @@ input:focus {
 }
 
 .chat-message {
-  /* background-color: green; */
   grid-column: 2 / -1;
   grid-row: 2 / -1;
   font-size: 14px;
@@ -207,7 +204,6 @@ input:focus {
 }
 
 .view-header {
-  /* background-color: cyan; */
   grid-column: 1;
   grid-row: 1 / 2;
 }
@@ -253,14 +249,29 @@ input:focus {
   align-self: center;
 }
 
-.view-chat-messages {
-  /* background-color: turquoise; */
+.view-messages {
+  background-color: #fff;
   grid-column: 1;
   grid-row: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.view-user-messages {
+  border-radius: 7px;
+  min-width: 20%;
+  max-width: 40%;
+  background-color: #d8fcd3;
+  color: #111b21;
+  font-size: 14px;
+  padding: 6px 7px 8px 9px;
+  /* display: flex; */
+  /* flex-direction: column; */
 }
 
 .view-footer {
-  /* background-color: burlywood; */
   grid-column: 1;
   grid-row: 3 / 4;
 }
